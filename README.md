@@ -98,7 +98,7 @@ ACL Design: Two separate ACLs serve distinct purposes on the access switches:
 
 All devices restrict VTY access to SSH version 2 only. RSA crypto keys are used for ssh (modulus 2048), VTY lines on all devices have access-class applied, limiting remote management sessions to hosts within the 10.99.99.0/24 management subnet. Console lines have logging synchronous configured to prevent log output from interrupting active CLI sessions, a QOL feature. 
 
-A Raspberry Pi console server is planned as a jump box for true out-of-band access via VLAN 99 subinterfaces on the routers. Currently SSH is possible from any router or switch to any other router or switch via console cable, local login, and SSH to the other device. 
+A Raspberry Pi console server is planned as a jump box for true out-of-band access via VLAN 99 subinterfaces on the routers. Currently SSH is possible from any router or switch to any other router or switch via console cable, local login, and then SSH to the other device. 
 
 ---
 
