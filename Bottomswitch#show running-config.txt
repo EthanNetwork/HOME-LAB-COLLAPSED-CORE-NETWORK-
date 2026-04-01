@@ -1,0 +1,784 @@
+Bottomswitch#show running-config
+Building configuration...
+
+Current configuration : 23354 bytes
+!
+! Last configuration change at 15:24:44 UTC Wed Apr 1 2026
+!
+version 15.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Bottomswitch
+!
+boot-start-marker
+boot-end-marker
+!
+!
+username ethangrishin privilege 15 secret 9 $9$2L/SL9QqbpEXol$LQk5oJvqOkaRqMaM7jXNapesVoX82p884XGmuqKQNis
+no aaa new-model
+switch 1 provision ws-c2960x-48lps-l
+!
+!
+!
+!
+ip arp inspection vlan 10,20,30,40
+ip arp inspection validate src-mac ip
+!
+!
+ip dhcp snooping vlan 10,20,30,40
+no ip dhcp snooping information option
+ip dhcp snooping
+ip domain-name office.com
+!
+!
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-4079404928
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-4079404928
+ revocation-check none
+ rsakeypair TP-self-signed-4079404928
+!
+!
+crypto pki certificate chain TP-self-signed-4079404928
+ certificate self-signed 01
+  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274
+  69666963 6174652D 34303739 34303439 3238301E 170D3236 30333233 31313037
+  31385A17 0D333030 31303130 30303030 305A3031 312F302D 06035504 03132649
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D34 30373934
+  30343932 3830819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281
+  8100B316 44FA3AF1 4451DF1E ED92C8DB 6A2EF7BB 243E24E7 AB47AE71 961C5FCF
+  13BEEC2F 1E9950A5 F14459A4 F83911F6 6166A597 1C1F2E00 97C77922 CBC44521
+  277FCF49 8E2F0706 E76C7DBF 9E38EB39 0DEF25E1 F3B05CDB 68E00F97 5C28898A
+  B265B46C ECA43B11 387D72F0 46E2F36B 0875403A 60DC9A73 10926DBB 0F42B9D4
+  BF610203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603
+  551D2304 18301680 1481B7AA 358852F8 2ED426EE BDBB81D1 E0A510FD 3A301D06
+  03551D0E 04160414 81B7AA35 8852F82E D426EEBD BB81D1E0 A510FD3A 300D0609
+  2A864886 F70D0101 05050003 81810053 E42649BB 8D18FB05 B93FD381 9BD5BADA
+  D3D3F647 00E2EC17 72B5EE4B D26CE172 374A553C F3B1CBE4 B8AF7938 D5A828AE
+  6FB9B013 6AC2F46C DE023847 BA6AF5E7 7C604D04 83DD0EE7 0ACAD077 22213F27
+  FB9FD8E0 D015A190 9C491F8E 0E6B83EA 4BB6C8E3 9EA63136 1F00D395 3E0D8593
+  81020384 07A303DE CB335D54 7F64A9
+        quit
+!
+spanning-tree mode rapid-pvst
+spanning-tree loopguard default
+spanning-tree portfast edge bpdufilter default
+spanning-tree extend system-id
+errdisable recovery cause bpduguard
+errdisable recovery cause psecure-violation
+errdisable recovery cause dhcp-rate-limit
+errdisable recovery cause arp-inspection
+errdisable recovery interval 30
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel1
+ ip arp inspection trust
+!
+interface FastEthernet0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/0/1
+ ip arp inspection trust
+ channel-group 1 mode active
+ ip dhcp snooping trust
+!
+interface GigabitEthernet1/0/2
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/3
+ ip arp inspection trust
+ channel-group 1 mode active
+ ip dhcp snooping trust
+!
+interface GigabitEthernet1/0/4
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/5
+ ip arp inspection trust
+ channel-group 1 mode active
+ ip dhcp snooping trust
+!
+interface GigabitEthernet1/0/6
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/7
+ ip arp inspection trust
+ channel-group 1 mode active
+ ip dhcp snooping trust
+!
+interface GigabitEthernet1/0/8
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/9
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/10
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/11
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/12
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/13
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/14
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/15
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/16
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/17
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/18
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/19
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/20
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/21
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/22
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/23
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/24
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/25
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/26
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/27
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/28
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/29
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/30
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/31
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/32
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/33
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/34
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/35
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/36
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/37
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/38
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/39
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/40
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/41
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/42
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/43
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/44
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/45
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/46
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/47
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/48
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/49
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/50
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/51
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface GigabitEthernet1/0/52
+ switchport mode access
+ switchport port-security maximum 10
+ switchport port-security violation restrict
+ switchport port-security aging time 30
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 10
+ ip access-group denyssh in
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 10
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan99
+ ip address 10.99.99.8 255.255.255.0
+!
+!
+ip http server
+ip http secure-server
+ip ssh version 2
+!
+ip access-list standard denyssh
+ deny   10.99.99.0 0.0.0.255
+ permit any
+!
+ip access-list extended sshvty
+ permit tcp 10.99.99.0 0.0.0.255 10.99.99.0 0.0.0.255 eq 22
+!
+!
+!
+line con 0
+ logging synchronous
+ login local
+line vty 0 4
+ access-class sshvty in
+ logging synchronous
+ login local
+ transport input ssh
+line vty 5 15
+ access-class sshvty in
+ logging synchronous
+ login local
+ transport input ssh
+!
+ntp server 1.1.1.1
+!
+end

@@ -1,0 +1,369 @@
+CORESW00(config)#do show running-config
+Building configuration...
+
+Current configuration : 7356 bytes
+!
+! Last configuration change at 17:28:25 UTC Wed Apr 1 2026
+!
+version 15.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname CORESW00
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-vrf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+!
+username ethangrishin privilege 15 secret 5 $1$hCVS$RS3tyaGjxiHOMCQ/2J62E.
+no aaa new-model
+switch 1 provision ws-c3650-48td
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip routing
+!
+ip domain-name office.com
+!
+!
+qos queue-softmax-multiplier 100
+!
+!
+diagnostic bootup level minimal
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+spanning-tree vlan 1,10,30,40,99 priority 24576
+hw-switch switch 1 logging onboard message level 3
+!
+redundancy
+ mode sso
+!
+!
+!
+class-map match-any non-client-nrt-class
+!
+policy-map port_child_policy
+ class non-client-nrt-class
+  bandwidth remaining ratio 10
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel1
+ switchport trunk allowed vlan 1,10,20,30,40,99
+ switchport mode trunk
+!
+interface Port-channel2
+ switchport trunk allowed vlan 1,10,20,30,40,99
+ switchport mode trunk
+!
+interface GigabitEthernet0/0
+ vrf forwarding Mgmt-vrf
+ no ip address
+ negotiation auto
+!
+interface GigabitEthernet1/0/1
+ switchport trunk allowed vlan 1,10,20,30,40,99
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/2
+!
+interface GigabitEthernet1/0/3
+ switchport trunk allowed vlan 1,10,20,30,40,99
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/4
+!
+interface GigabitEthernet1/0/5
+ switchport trunk allowed vlan 1,10,20,30,40,99
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/6
+!
+interface GigabitEthernet1/0/7
+ switchport trunk allowed vlan 1,10,20,30,40,99
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/8
+!
+interface GigabitEthernet1/0/9
+ switchport trunk allowed vlan 1,10,20,30,40,99
+ switchport mode trunk
+ channel-group 2 mode active
+!
+interface GigabitEthernet1/0/10
+!
+interface GigabitEthernet1/0/11
+ switchport trunk allowed vlan 1,10,20,30,40,99
+ switchport mode trunk
+ channel-group 2 mode active
+!
+interface GigabitEthernet1/0/12
+!
+interface GigabitEthernet1/0/13
+ switchport trunk allowed vlan 1,10,20,30,40,99
+ switchport mode trunk
+ channel-group 2 mode active
+!
+interface GigabitEthernet1/0/14
+!
+interface GigabitEthernet1/0/15
+ switchport trunk allowed vlan 1,10,20,30,40,99
+ switchport mode trunk
+ channel-group 2 mode active
+!
+interface GigabitEthernet1/0/16
+!
+interface GigabitEthernet1/0/17
+!
+interface GigabitEthernet1/0/18
+!
+interface GigabitEthernet1/0/19
+!
+interface GigabitEthernet1/0/20
+!
+interface GigabitEthernet1/0/21
+!
+interface GigabitEthernet1/0/22
+!
+interface GigabitEthernet1/0/23
+!
+interface GigabitEthernet1/0/24
+!
+interface GigabitEthernet1/0/25
+!
+interface GigabitEthernet1/0/26
+!
+interface GigabitEthernet1/0/27
+!
+interface GigabitEthernet1/0/28
+!
+interface GigabitEthernet1/0/29
+!
+interface GigabitEthernet1/0/30
+!
+interface GigabitEthernet1/0/31
+!
+interface GigabitEthernet1/0/32
+!
+interface GigabitEthernet1/0/33
+!
+interface GigabitEthernet1/0/34
+!
+interface GigabitEthernet1/0/35
+!
+interface GigabitEthernet1/0/36
+!
+interface GigabitEthernet1/0/37
+!
+interface GigabitEthernet1/0/38
+!
+interface GigabitEthernet1/0/39
+!
+interface GigabitEthernet1/0/40
+!
+interface GigabitEthernet1/0/41
+ switchport trunk allowed vlan 1,10,20,30,40,99
+ switchport mode trunk
+ channel-group 1 mode active
+!
+interface GigabitEthernet1/0/42
+!
+interface GigabitEthernet1/0/43
+ switchport trunk allowed vlan 1,10,20,30,40,99
+ switchport mode trunk
+ channel-group 1 mode active
+!
+interface GigabitEthernet1/0/44
+!
+interface GigabitEthernet1/0/45
+ switchport trunk allowed vlan 1,10,20,30,40,99
+ switchport mode trunk
+ channel-group 1 mode active
+!
+interface GigabitEthernet1/0/46
+!
+interface GigabitEthernet1/0/47
+ switchport trunk allowed vlan 1,10,20,30,40,99
+ switchport mode trunk
+ channel-group 1 mode active
+!
+interface GigabitEthernet1/0/48
+!
+interface GigabitEthernet1/1/1
+!
+interface GigabitEthernet1/1/2
+!
+interface TenGigabitEthernet1/1/3
+!
+interface TenGigabitEthernet1/1/4
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan10
+ ip address 10.10.10.4 255.255.255.0
+ ip ospf message-digest-key 1 md5 ORGPASSWORD
+ ip ospf priority 100
+ ip ospf 1 area 0
+!
+interface Vlan20
+ ip address 172.168.20.4 255.255.255.0
+ ip ospf message-digest-key 1 md5 ORGPASSWORD
+ ip ospf priority 100
+ ip ospf 1 area 0
+!
+interface Vlan30
+ ip address 192.168.30.4 255.255.255.0
+ ip ospf message-digest-key 1 md5 ORGPASSWORD
+ ip ospf priority 100
+ ip ospf 1 area 0
+!
+interface Vlan40
+ ip address 192.168.40.4 255.255.255.0
+ ip ospf message-digest-key 1 md5 ORGPASSWORD
+ ip ospf priority 100
+ ip ospf 1 area 0
+!
+interface Vlan99
+ ip address 10.99.99.3 255.255.255.0
+!
+!
+router eigrp 1
+ network 10.99.99.0 0.0.0.255
+ eigrp stub connected summary
+!
+router ospf 1
+ auto-cost reference-bandwidth 100000
+ area 0 authentication message-digest
+ area 1 authentication message-digest
+!
+ip forward-protocol nd
+ip http server
+ip http authentication local
+ip http secure-server
+ip ssh version 2
+!
+ip access-list extended AutoQos-4.0-wlan-Acl-Bulk-Data
+ permit tcp any any eq 22
+ permit tcp any any eq 465
+ permit tcp any any eq 143
+ permit tcp any any eq 993
+ permit tcp any any eq 995
+ permit tcp any any eq 1914
+ permit tcp any any eq ftp
+ permit tcp any any eq ftp-data
+ permit tcp any any eq smtp
+ permit tcp any any eq pop3
+ip access-list extended AutoQos-4.0-wlan-Acl-MultiEnhanced-Conf
+ permit udp any any range 16384 32767
+ permit tcp any any range 50000 59999
+ip access-list extended AutoQos-4.0-wlan-Acl-Scavanger
+ permit tcp any any range 2300 2400
+ permit udp any any range 2300 2400
+ permit tcp any any range 6881 6999
+ permit tcp any any range 28800 29100
+ permit tcp any any eq 1214
+ permit udp any any eq 1214
+ permit tcp any any eq 3689
+ permit udp any any eq 3689
+ permit tcp any any eq 11999
+ip access-list extended AutoQos-4.0-wlan-Acl-Signaling
+ permit tcp any any range 2000 2002
+ permit tcp any any range 5060 5061
+ permit udp any any range 5060 5061
+ip access-list extended AutoQos-4.0-wlan-Acl-Transactional-Data
+ permit tcp any any eq 443
+ permit tcp any any eq 1521
+ permit udp any any eq 1521
+ permit tcp any any eq 1526
+ permit udp any any eq 1526
+ permit tcp any any eq 1575
+ permit udp any any eq 1575
+ permit tcp any any eq 1630
+ permit udp any any eq 1630
+ permit tcp any any eq 1527
+ permit tcp any any eq 6200
+ permit tcp any any eq 3389
+ permit tcp any any eq 5985
+ permit tcp any any eq 8080
+ip access-list extended sshvty99
+ permit tcp 10.99.99.0 0.0.0.255 10.99.99.0 0.0.0.255 eq 22
+!
+!
+!
+!
+line con 0
+ logging synchronous
+ login local
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ access-class sshvty99 in
+ logging synchronous
+ login local
+ transport input ssh
+line vty 5 15
+ access-class sshvty99 in
+ logging synchronous
+ login local
+ transport input ssh
+!
+ntp server 1.1.1.1
+wsma agent exec
+ profile httplistener
+ profile httpslistener
+!
+wsma agent config
+ profile httplistener
+ profile httpslistener
+!
+wsma agent filesys
+ profile httplistener
+ profile httpslistener
+!
+wsma agent notify
+ profile httplistener
+ profile httpslistener
+!
+!
+wsma profile listener httplistener
+ transport http
+!
+wsma profile listener httpslistener
+ transport https
+!
+ap group default-group
+end
+
