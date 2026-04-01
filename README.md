@@ -24,13 +24,12 @@ BottomSwitch | Cisco Catalyst 2960X-48LPS-L | Access Layer Switch |
 
 
 
-|---|---|---|
-10 | 10.10.10.0/24 | Data |
-20 | 172.168.20.0/24 | Data |
-30 | 192.168.30.0/24 | Data |
-40 | 192.168.40.0/24 | Data |
-99 | 10.99.99.0/24 | Out-of-Band Management |
-1  | Native VLAN
+10: 10.10.10.0/24 (Data)
+20: 172.168.20.0/24 (Data)
+30: 192.168.30.0/24 (Data)
+40 : 192.168.40.0/24 _Data)
+99 : 10.99.99.0/24 (OOB Management)
+1 : Native VLAN
 
  VLAN 99 is the dedicated OOB management plane, isolated from production data traffic using a separate EIGRP routing protocol not shared by any other devices.
 
