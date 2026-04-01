@@ -10,6 +10,8 @@ All device configurations are provided as exported running-config text files.
 
 ## Lab Devices
 
+| Device | Model | Role |
+|---|---|---|
 TopRouter | Cisco ISR 4331 | WAN Edge Router VLANs 10/20) |
 BottomRouter | Cisco ISR 4331 | WAN Edge Router VLANs 30/40) |
 CORESW00 | Cisco Catalyst 3650 | Layer 3 Core Switch |
