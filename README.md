@@ -114,7 +114,7 @@ All devices synchronize to 1.1.1.1 (Cloudflare) as the NTP server.
 
 ## Future Expansion
 
-The core design philosophy is collapsed core, with a dual home WAN edge that upon rack expansion (planned Juniper EX4300 layer three switch) will also feature planned PAT pool translation to translate LAN IPs into a small SP provided public address pool with ephemeral port no.s assigned to each translation, allowing device allocation in shared public IPs. This will be accomplished in later configs by using a standard ACL to define what private IP space should be translated, setting a ip nat pool starting ip to end ip mask and setting overload on the ACL pooled translation. 
+The core design philosophy is three tier with collapsed core/distribution (CORESW00 has ip routing enabled and can route for LAN local traffic), with a dual home WAN edge that upon rack expansion (planned Juniper EX4300 layer three switch) will also feature planned PAT pool translation to translate LAN IPs into a small SP provided public address pool with ephemeral port no.s assigned to each translation, allowing device allocation in shared public IPs. This will be accomplished in later configs by using a standard ACL to define what private IP space should be translated, setting a ip nat pool starting ip to end ip mask and setting overload on the ACL pooled translation. 
 
 
 
