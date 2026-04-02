@@ -6,6 +6,12 @@ This repository contains the running configurations for a home lab built to simu
 
 All device configurations are provided as exported running-config text files.
 
+
+##DIAGRAM
+
+<img width="887" height="587" alt="image" src="https://github.com/user-attachments/assets/7e1f6c95-cd8a-4371-bc98-584726649eb2" />
+
+
 ---
 
 ## Lab Devices
@@ -111,8 +117,4 @@ All devices synchronize to 1.1.1.1 (Cloudflare) as the NTP server.
 The core design philosophy is collapsed core, with a dual home WAN edge that upon rack expansion (planned Juniper EX4300 layer three switch) will also feature planned PAT pool translation to translate LAN IPs into a small SP provided public address pool with ephemeral port no.s assigned to each translation, allowing device allocation in shared public IPs. This will be accomplished in later configs by using a standard ACL to define what private IP space should be translated, setting a ip nat pool starting ip to end ip mask and setting overload on the ACL pooled translation. 
 
 
-
-##DIAGRAM
-
-<img width="887" height="587" alt="image" src="https://github.com/user-attachments/assets/7e1f6c95-cd8a-4371-bc98-584726649eb2" />
 
