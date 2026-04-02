@@ -18,8 +18,8 @@ All device configurations are provided as exported running-config text files.
 
 | Device | Model | Role |
 |---|---|---|
-TopRouter | Cisco ISR 4331 | WAN Edge Router VLANs 10/20) |
-BottomRouter | Cisco ISR 4331 | WAN Edge Router VLANs 30/40) |
+TopRouter | Cisco ISR 4331 | WAN Edge Router (VLANs 10/20) |
+BottomRouter | Cisco ISR 4331 | WAN Edge Router (VLANs 30/40) |
 CORESW00 | Cisco Catalyst 3650 | Layer 3 Core Switch |
 TopSwitch | Cisco Catalyst 2960X-24PS-L | Access Layer Switch |
 BottomSwitch | Cisco Catalyst 2960X-48LPS-L | Access Layer Switch |
