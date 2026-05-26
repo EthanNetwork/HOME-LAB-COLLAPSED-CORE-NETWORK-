@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains the running configurations for a home lab built to simulate a scaled-down enterprise LAN. The lab demonstrates routing redundancy, Layer 2 security hardening, management plane segmentation, and OSPF with MD5 authentication across a five-device topology.
+This repository contains the running configurations for a home lab built to simulate a scaled-down enterprise LAN. The lab demonstrates routing redundancy, Layer 2 security hardening, management plane segmentation, and OSPF with MD5 authentication across a five-device topology. This lab utilizes fully real metal appliances, no sims were used in it's creation.
 
 All device configurations are provided as exported running-config text files.
 
