@@ -9,10 +9,10 @@ All device configurations are provided as exported running-config text files.
 
 ##Network Diagram
 
-<img width="887" height="887" alt="image" src="https://github.com/user-attachments/assets/7e1f6c95-cd8a-4371-bc98-584726649eb2" />
+<img width="887" height="587" alt="image" src="https://github.com/user-attachments/assets/7e1f6c95-cd8a-4371-bc98-584726649eb2" />
 
 
-<img width="887" height="587" alt="image" src="https://github.com/EthanNetwork/HOME-LAB-COLLAPSED-CORE-NETWORK-/blob/main/LAB%20PHOTOS/1000003408%20-%20Copy.jpg?raw=true" />
+<img width="887" height="887" alt="image" src="https://github.com/EthanNetwork/HOME-LAB-COLLAPSED-CORE-NETWORK-/blob/main/LAB%20PHOTOS/1000003408%20-%20Copy.jpg?raw=true" />
 ---
 
 ## Lab Devices
