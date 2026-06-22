@@ -7,7 +7,7 @@ This repository contains the running configurations for a home lab built to simu
 All device configurations are provided as exported running-config text files.
 
 
-##Network Diagram
+## Network Diagram
 
 <img width="887" height="587" alt="image" src="https://github.com/user-attachments/assets/7e1f6c95-cd8a-4371-bc98-584726649eb2" />
 
